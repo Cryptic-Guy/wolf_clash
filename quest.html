@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quest Page</title>
+  <link rel="stylesheet" href="quest-styles.css">
+</head>
+<body>
+  <!-- Coin Display -->
+  <div class="coin-count">
+    <img src="assets/coin-icon.png" alt="Coin">
+    <span id="coin-count"></span> <!-- Synced with localStorage -->
+  </div>
+
+  <!-- Back Button -->
+  
+  <!-- Quest Cards -->
+  <div class="quest-container">
+    <div class="quest-card" onclick="location.href='game-quests.html'">
+      <h2>Game Quests</h2>
+    </div>
+    <div class="quest-card" onclick="location.href='social-quests.html'">
+      <h2>Social Quests</h2>
+    </div>
+    <div class="quest-card" onclick="location.href='partners-quests.html'">
+      <h2>Partners Quests</h2>
+    </div>
+  </div>
+
+  <!-- Navigation (same as game page) -->
+  <div class="nav-container">
+    <button class="nav-button" onclick="location.href='quest.html'">
+      <img src="assets/quest-icon.png" alt="Quests">
+      <p>Quests</p>
+    </button>
+    <button class="nav-button" onclick="location.href='index.html'">
+      <img src="assets/game-icon.png" alt="Game">
+      <p>Game</p>
+    </button>
+    <button class="nav-button" onclick="location.href='shop.html'">
+      <img src="assets/shop-icon.png" alt="Shop">
+      <p>Shop</p>
+    </button>
+  </div>
+
+  <script>
+    // Sync the coin count with localStorage
+    document.getElementById('coin-count').textContent = localStorage.getItem('coins') || 0;
+  </script>
+</body>
+</html>
+

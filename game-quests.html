@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Quests</title>
+  <link rel="stylesheet" href="game-quests.css">
+</head>
+<body>
+  <div id="game-quests-app">
+    <!-- Coin Count -->
+    <div class="coin-count">
+      <img src="assets/coin-icon.png" alt="Coin">
+      <span id="coin-count">{{ coinCount }}</span>
+    </div>
+
+    <!-- Game Quests Cards -->
+    <div class="quest-container">
+      <!-- Daily Login Quest -->
+      <div class="quest-card" id="daily-login-quest">
+        <h2>Daily Login</h2>
+        <p>Reward: 500 Coins</p>
+      </div>
+
+      <!-- Tap 100 Times Quest -->
+      <div class="quest-card" id="tap-100-times-quest">
+        <h2>Tap 100 Times</h2>
+        <p>Reward: 250 Coins</p>
+      </div>
+
+      <!-- Tap 500 Times Quest -->
+      <div class="quest-card" id="tap-500-times-quest">
+        <h2>Tap 500 Times</h2>
+        <p>Reward: 800 Coins</p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+      <button class="nav-button" onclick="location.href='quest.html'">
+        <img src="assets/quest-icon.png" alt="Quests">
+        <p>Quests</p>
+      </button>
+      <button class="nav-button" onclick="location.href='index.html'">
+        <img src="assets/game-icon.png" alt="Game">
+        <p>Game</p>
+      </button>
+      <button class="nav-button" onclick="location.href='shop.html'">
+        <img src="assets/shop-icon.png" alt="Shop">
+        <p>Shop</p>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="quests/dailyquest.js"></script>
+  <script src="quests/clickquest.js"></script>
+  <script>
+    new Vue({
+      el: '#game-quests-app',
+      data: {
+        coinCount: localStorage.getItem('coins') || 0,
+      },
+      methods: {
+        startQuest(questName) {
+          alert(`Starting quest: ${questName}`);
+          // Add logic to handle each quest here
+        }
+      }
+    });
+
+    // Ensure coin count is updated
+    document.getElementById('coin-count').textContent = localStorage.getItem('coins') || 0;
+  </script>
+</body>
+</html>

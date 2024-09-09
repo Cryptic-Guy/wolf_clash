@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wolf Clash Clicker</title>
+  <link rel="stylesheet" href="index-styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Coin Display -->
+    <div class="coin-count">
+      <img src="assets/coin-icon.png" alt="Coin"> {{ coinCount }}
+    </div>
+    
+    <!-- Game Section -->
+    <h1>Click the Wolf!</h1>
+    <div class="wolf-container">
+      <img @click="incrementCoin" src="assets/wolf.png" alt="Wolf">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-container">
+      <button @click="goTo('quest.html')" class="nav-button">
+        <img src="assets/quest-icon.png" alt="Quest">
+        <p>Quest</p>
+      </button>
+      <button @click="goTo('index.html')" class="nav-button">
+        <img src="assets/game-icon.png" alt="Game">
+        <p>Game</p>
+      </button>
+      <button @click="goTo('shop.html')" class="nav-button">
+        <img src="assets/shop-icon.png" alt="Shop">
+        <p>Shop</p>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        coinCount: localStorage.getItem('coins') || 0,
+        clicks: localStorage.getItem('clicks') || 0
+      },
+      methods: {
+        incrementCoin() {
+          this.coinCount = parseInt(this.coinCount) + 1;
+          localStorage.setItem('coins', this.coinCount);
+          this.clicks = parseInt(this.clicks) + 1;
+          localStorage.setItem('clicks', this.clicks);
+        },
+        goTo(page) {
+          window.location.href = page;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
